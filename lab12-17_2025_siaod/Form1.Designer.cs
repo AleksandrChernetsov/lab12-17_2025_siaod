@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             button1 = new Button();
             numericUpDown1 = new NumericUpDown();
@@ -40,6 +40,7 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
@@ -47,10 +48,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dataGridView1.Location = new Point(1, 1);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(493, 200);
+            dataGridView1.Size = new Size(603, 200);
             dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -65,7 +66,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(248, 221);
+            numericUpDown1.Location = new Point(292, 221);
             numericUpDown1.Maximum = new decimal(new int[] { 1569325056, 23283064, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(120, 23);
@@ -76,7 +77,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(138, 224);
+            label1.Location = new Point(182, 224);
             label1.Name = "label1";
             label1.Size = new Size(100, 15);
             label1.TabIndex = 3;
@@ -86,7 +87,7 @@
             // 
             button2.BackgroundImageLayout = ImageLayout.None;
             button2.Image = Properties.Resources.Gnome_application_exit;
-            button2.Location = new Point(444, 207);
+            button2.Location = new Point(550, 207);
             button2.Name = "button2";
             button2.Size = new Size(48, 44);
             button2.TabIndex = 4;
@@ -95,18 +96,18 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Cyan;
-            dataGridViewCellStyle1.NullValue = false;
-            Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.Cyan;
+            dataGridViewCellStyle3.NullValue = false;
+            Column1.DefaultCellStyle = dataGridViewCellStyle3;
             Column1.HeaderText = "";
             Column1.Name = "Column1";
             Column1.Width = 50;
             // 
             // Column2
             // 
-            dataGridViewCellStyle2.BackColor = Color.Cyan;
-            Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = Color.Cyan;
+            Column2.DefaultCellStyle = dataGridViewCellStyle4;
             Column2.HeaderText = "";
             Column2.Name = "Column2";
             // 
@@ -125,12 +126,18 @@
             Column5.HeaderText = "Время";
             Column5.Name = "Column5";
             // 
+            // Column6
+            // 
+            Column6.HeaderText = "Отсортировано?";
+            Column6.Name = "Column6";
+            Column6.Width = 110;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(496, 256);
+            ClientSize = new Size(606, 256);
             Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(numericUpDown1);
@@ -157,5 +164,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

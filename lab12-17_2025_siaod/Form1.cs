@@ -10,7 +10,7 @@
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.RowCount = 7;      // число строк 
-            dataGridView1.ColumnCount = 5;  // число столбцов
+            dataGridView1.ColumnCount = 6;  // число столбцов
 
             dataGridView1.Rows[0].Cells[1].Value = "Обмен";
             dataGridView1.Rows[1].Cells[1].Value = "Выбор";
