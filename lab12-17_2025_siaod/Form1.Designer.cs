@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
-            button1 = new Button();
-            numericUpDown1 = new NumericUpDown();
-            label1 = new Label();
-            button2 = new Button();
             Column1 = new DataGridViewCheckBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            numericUpDown1 = new NumericUpDown();
+            label1 = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
@@ -54,60 +54,20 @@
             dataGridView1.Size = new Size(603, 200);
             dataGridView1.TabIndex = 0;
             // 
-            // button1
-            // 
-            button1.Location = new Point(3, 221);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Сортировать";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(292, 221);
-            numericUpDown1.Maximum = new decimal(new int[] { 1569325056, 23283064, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
-            numericUpDown1.TabIndex = 2;
-            numericUpDown1.Value = new decimal(new int[] { 1000, 0, 0, 0 });
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(182, 224);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 15);
-            label1.TabIndex = 3;
-            label1.Text = "Размер массива";
-            // 
-            // button2
-            // 
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Image = Properties.Resources.Gnome_application_exit;
-            button2.Location = new Point(550, 207);
-            button2.Name = "button2";
-            button2.Size = new Size(48, 44);
-            button2.TabIndex = 4;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // Column1
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Cyan;
-            dataGridViewCellStyle3.NullValue = false;
-            Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Cyan;
+            dataGridViewCellStyle1.NullValue = false;
+            Column1.DefaultCellStyle = dataGridViewCellStyle1;
             Column1.HeaderText = "";
             Column1.Name = "Column1";
             Column1.Width = 50;
             // 
             // Column2
             // 
-            dataGridViewCellStyle4.BackColor = Color.Cyan;
-            Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = Color.Cyan;
+            Column2.DefaultCellStyle = dataGridViewCellStyle2;
             Column2.HeaderText = "";
             Column2.Name = "Column2";
             // 
@@ -131,6 +91,46 @@
             Column6.HeaderText = "Отсортировано?";
             Column6.Name = "Column6";
             Column6.Width = 110;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(3, 221);
+            button1.Name = "button1";
+            button1.Size = new Size(93, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Сортировать";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(292, 221);
+            numericUpDown1.Maximum = new decimal(new int[] { 1569325056, 23283064, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.TabIndex = 2;
+            numericUpDown1.Value = new decimal(new int[] { 10000, 0, 0, 0 });
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(182, 224);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Размер массива";
+            // 
+            // button2
+            // 
+            button2.BackgroundImageLayout = ImageLayout.None;
+            button2.Image = Properties.Resources.Gnome_application_exit;
+            button2.Location = new Point(550, 207);
+            button2.Name = "button2";
+            button2.Size = new Size(48, 44);
+            button2.TabIndex = 4;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 

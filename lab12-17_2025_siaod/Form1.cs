@@ -1,7 +1,11 @@
-﻿namespace lab12_17_2025_siaod
+﻿using System.Diagnostics;
+
+namespace lab12_17_2025_siaod
 {
     public partial class Form1 : Form
     {
+        private Random random = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,16 +26,106 @@
 
             dataGridView1.Rows[0].Cells[0].Value = true;
             dataGridView1.Rows[1].Cells[0].Value = true;
-            dataGridView1.Rows[2].Cells[0].Value = true;
-            dataGridView1.Rows[3].Cells[0].Value = true;
-            dataGridView1.Rows[4].Cells[0].Value = true;
-            dataGridView1.Rows[5].Cells[0].Value = true;
-            dataGridView1.Rows[6].Cells[0].Value = true;
+        }
+
+        // Функция проверки упорядоченности массива по возрастанию
+        private bool IsSorted(int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] > array[i + 1])
+                    return false;
+            }
+            return true;
+        }
+
+        // Сортировка прямым обменом (пузырьковая)
+        private (int comparisons, int swaps, long time) BubbleSort(int[] array)
+        {
+            int comparisons = 0;
+            int swaps = 0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            bool swapped;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                swapped = false;
+                for (int j = 0; j < array.Length - i - 1; j++)
+                {
+                    comparisons++;
+                    if (array[j] > array[j + 1])
+                    {
+                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
+                        swaps++;
+                        swapped = true;
+                    }
+                }
+                if (!swapped) break; // Если обменов не было, массив уже отсортирован
+            }
+            stopwatch.Stop();
+
+            return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
+        }
+
+        // Сортировка прямым выбором
+        private (int comparisons, int swaps, long time) SelectionSort(int[] array)
+        {
+            int comparisons = 0;
+            int swaps = 0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    comparisons++;
+                    if (array[j] < array[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex != i)
+                {
+                    (array[i], array[minIndex]) = (array[minIndex], array[i]);
+                    swaps++;
+                }
+            }
+            stopwatch.Stop();
+
+            return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int size = (int)numericUpDown1.Value;
+            int[] originalArray = new int[size];
+            for (int i = 0; i < size; i++)
+                originalArray[i] = random.Next(size);
 
+            if ((bool)dataGridView1.Rows[0].Cells[0].Value)
+            {
+                int[] sortingArray = (int[])originalArray.Clone();
+                var result = BubbleSort(sortingArray);
+
+                dataGridView1.Rows[0].Cells[2].Value = result.comparisons;
+                dataGridView1.Rows[0].Cells[3].Value = result.swaps;
+                dataGridView1.Rows[0].Cells[4].Value = result.time + " мс";
+                dataGridView1.Rows[0].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
+            }
+
+            if ((bool)dataGridView1.Rows[1].Cells[0].Value)
+            {
+                int[] sortingArray = (int[])originalArray.Clone();
+                var result = SelectionSort(sortingArray);
+
+                dataGridView1.Rows[1].Cells[2].Value = result.comparisons;
+                dataGridView1.Rows[1].Cells[3].Value = result.swaps;
+                dataGridView1.Rows[1].Cells[4].Value = result.time + " мс";
+                dataGridView1.Rows[1].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
