@@ -61,7 +61,7 @@ namespace lab12_17_2025_siaod
                         swapped = true;
                     }
                 }
-                if (!swapped) break; // Если обменов не было, массив уже отсортирован
+                if (!swapped) break; 
             }
             stopwatch.Stop();
 
@@ -87,11 +87,8 @@ namespace lab12_17_2025_siaod
                         minIndex = j;
                     }
                 }
-                if (minIndex != i)
-                {
                     (array[i], array[minIndex]) = (array[minIndex], array[i]);
                     swaps++;
-                }
             }
             stopwatch.Stop();
 
