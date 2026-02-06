@@ -26,6 +26,7 @@ namespace lab12_17_2025_siaod
 
             dataGridView1.Rows[0].Cells[0].Value = true;
             dataGridView1.Rows[1].Cells[0].Value = true;
+            dataGridView1.Rows[2].Cells[0].Value = true;
         }
 
         // Функция проверки упорядоченности массива по возрастанию
@@ -61,7 +62,7 @@ namespace lab12_17_2025_siaod
                         swapped = true;
                     }
                 }
-                if (!swapped) break; 
+                if (!swapped) break;
             }
             stopwatch.Stop();
 
@@ -87,9 +88,46 @@ namespace lab12_17_2025_siaod
                         minIndex = j;
                     }
                 }
-                    (array[i], array[minIndex]) = (array[minIndex], array[i]);
-                    swaps++;
+                (array[i], array[minIndex]) = (array[minIndex], array[i]);
+                swaps++;
             }
+            stopwatch.Stop();
+
+            return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
+        }
+
+        // Сортировка прямым включением (сортировка вставками с барьером)
+        private (int comparisons, int swaps, long time) InsertionSort(int[] array)
+        {
+            int comparisons = 0;
+            int swaps = 0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                int barrier = array[i];
+                int j = i - 1;
+
+                while (j >= 0)
+                {
+                    comparisons++;
+                    if (array[j] > barrier)
+                    {
+                        array[j + 1] = array[j];
+                        swaps++;
+                        j--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                array[j + 1] = barrier;
+                swaps++; 
+            }
+
             stopwatch.Stop();
 
             return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
@@ -122,6 +160,17 @@ namespace lab12_17_2025_siaod
                 dataGridView1.Rows[1].Cells[3].Value = result.swaps;
                 dataGridView1.Rows[1].Cells[4].Value = result.time + " мс";
                 dataGridView1.Rows[1].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
+            }
+
+            if ((bool)dataGridView1.Rows[2].Cells[0].Value)
+            {
+                int[] sortingArray = (int[])originalArray.Clone();
+                var result = InsertionSort(sortingArray);
+
+                dataGridView1.Rows[2].Cells[2].Value = result.comparisons;
+                dataGridView1.Rows[2].Cells[3].Value = result.swaps;
+                dataGridView1.Rows[2].Cells[4].Value = result.time + " мс";
+                dataGridView1.Rows[2].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
             }
         }
 
