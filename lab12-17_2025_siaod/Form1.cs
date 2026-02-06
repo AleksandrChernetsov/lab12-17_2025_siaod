@@ -96,7 +96,7 @@ namespace lab12_17_2025_siaod
             return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
         }
 
-        // Сортировка прямым включением (сортировка вставками с барьером)
+        // Сортировка прямым включением (сортировка вставками с минимальным барьером)
         private (int comparisons, int swaps, long time) InsertionSort(int[] array)
         {
             int comparisons = 0;
@@ -105,27 +105,35 @@ namespace lab12_17_2025_siaod
 
             stopwatch.Start();
 
+            int minIndex = 0;
             for (int i = 1; i < array.Length; i++)
+            {
+                comparisons++;
+                if (array[i] < array[minIndex])
+                {
+                    minIndex = i;
+                }
+            }
+
+            (array[0], array[minIndex]) = (array[minIndex], array[0]);
+            swaps++;
+
+            for (int i = 2; i < array.Length; i++)
             {
                 int barrier = array[i];
                 int j = i - 1;
 
-                while (j >= 0)
+                while (array[j] > barrier)
                 {
                     comparisons++;
-                    if (array[j] > barrier)
-                    {
-                        array[j + 1] = array[j];
-                        swaps++;
-                        j--;
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    array[j + 1] = array[j]; 
+                    swaps++;
+                    j--;
                 }
-                array[j + 1] = barrier;
-                swaps++; 
+                comparisons++;
+
+                array[j + 1] = barrier; 
+                swaps++;
             }
 
             stopwatch.Stop();
