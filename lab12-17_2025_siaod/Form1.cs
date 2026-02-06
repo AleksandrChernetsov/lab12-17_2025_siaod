@@ -143,6 +143,18 @@ namespace lab12_17_2025_siaod
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Если галочка снята — стираем результаты
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[0].Value == null || !(bool)dataGridView1.Rows[i].Cells[0].Value)
+                {
+                    dataGridView1.Rows[i].Cells[2].Value = null;
+                    dataGridView1.Rows[i].Cells[3].Value = null;
+                    dataGridView1.Rows[i].Cells[4].Value = null;
+                    dataGridView1.Rows[i].Cells[5].Value = null;
+                }
+            }
+
             int size = (int)numericUpDown1.Value;
             int[] originalArray = new int[size];
             for (int i = 0; i < size; i++)
