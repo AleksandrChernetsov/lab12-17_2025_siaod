@@ -26,7 +26,8 @@ namespace lab12_17_2025_siaod
 
             dataGridView1.Rows[0].Cells[0].Value = false;
             dataGridView1.Rows[1].Cells[0].Value = false;
-            dataGridView1.Rows[2].Cells[0].Value = true;
+            dataGridView1.Rows[2].Cells[0].Value = false;
+            dataGridView1.Rows[3].Cells[0].Value = true;
             dataGridView1.Rows[4].Cells[0].Value = true;
         }
 
@@ -142,6 +143,47 @@ namespace lab12_17_2025_siaod
             return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
         }
 
+        // Сортировка Шелла
+        private (long comparisons, long swaps, long time) ShellSort(int[] array)
+        {
+            long comparisons = 0;
+            long swaps = 0;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            int n = array.Length;
+
+            int t = (int)Math.Floor(Math.Log(n, 2)) - 1;
+            if (t < 1) t = 1;
+
+            int h = (int)Math.Pow(2, t - 1);
+
+            while (h >= 1)
+            {
+                for (int i = h; i < n; i++)
+                {
+                    int current = array[i];
+                    int j = i;
+
+                    while (j >= h && array[j - h] > current)
+                    {
+                        comparisons++;
+                        array[j] = array[j - h];
+                        swaps++;
+                        j -= h;
+                    }
+
+                    array[j] = current;
+                    swaps++;
+                }
+
+                h = h / 2;
+            }
+
+            stopwatch.Stop();
+            return (comparisons, swaps, stopwatch.ElapsedMilliseconds);
+        }
+
         // Быстрая сортировка (опорный элемент – левый)
         private (int comparisons, int swaps, long time) QuickSort(int[] array)
         {
@@ -250,6 +292,17 @@ namespace lab12_17_2025_siaod
                 dataGridView1.Rows[2].Cells[3].Value = result.swaps;
                 dataGridView1.Rows[2].Cells[4].Value = result.time + " мс";
                 dataGridView1.Rows[2].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
+            }
+
+            if ((bool)dataGridView1.Rows[3].Cells[0].Value)
+            {
+                int[] sortingArray = (int[])originalArray.Clone();
+                var result = ShellSort(sortingArray);
+
+                dataGridView1.Rows[3].Cells[2].Value = result.comparisons;
+                dataGridView1.Rows[3].Cells[3].Value = result.swaps;
+                dataGridView1.Rows[3].Cells[4].Value = result.time + " мс";
+                dataGridView1.Rows[3].Cells[5].Value = IsSorted(sortingArray) ? "Да" : "Нет";
             }
 
             if ((bool)dataGridView1.Rows[4].Cells[0].Value)
