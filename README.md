@@ -58,7 +58,7 @@ Each algorithm returns:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/sorting-algorithms-benchmark.git
+   git clone <repository-url>
    ```
 2. Open the solution file (`lab12_17_2025_siaod.sln`) in Visual Studio.
 3. Restore NuGet packages (if any – the project uses only built‑in libraries).
